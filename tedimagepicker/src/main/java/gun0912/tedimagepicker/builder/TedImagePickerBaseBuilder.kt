@@ -80,6 +80,7 @@ open class TedImagePickerBaseBuilder<out B : TedImagePickerBaseBuilder<B>>(
     internal var finishExitAnim: Int? = null,
     internal var screenOrientation: Int = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT,
     internal var showVideoDuration: Boolean = true,
+    internal var showDateScrollIndicator: Boolean = true,
 ) : Parcelable {
 
 
@@ -312,4 +313,8 @@ open class TedImagePickerBaseBuilder<out B : TedImagePickerBaseBuilder<B>>(
         return this as B
     }
 
+    fun showDateScrollIndicator(show: Boolean): B {
+        this.showDateScrollIndicator = show
+        return this as B
+    }
 }
