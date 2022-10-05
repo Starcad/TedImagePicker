@@ -232,12 +232,18 @@ internal class TedImagePickerActivity : AppCompatActivity() {
                         if (firstVisiblePosition <= 0) {
                             return
                         }
-                        val media = mediaAdapter.getItem(firstVisiblePosition)
-                        val dateString = SimpleDateFormat(
-                            builder.scrollIndicatorDateFormat,
-                            Locale.getDefault()
-                        ).format(Date(TimeUnit.SECONDS.toMillis(media.dateAddedSecond)))
-                        binding.layoutContent.fastScroller.setBubbleText(dateString)
+                        if(builder.showDateScrollIndicator)
+                        {
+                            val media = mediaAdapter.getItem(firstVisiblePosition)
+                            val dateString = SimpleDateFormat(
+                                builder.scrollIndicatorDateFormat,
+                                Locale.getDefault()
+                            ).format(Date(TimeUnit.SECONDS.toMillis(media.dateAddedSecond)))
+                            binding.layoutContent.fastScroller.setBubbleText(dateString)
+                        }
+                        else {
+                            binding.layoutContent.fastScroller.visibility = View.GONE
+                        }
                     }
                 }
             })
